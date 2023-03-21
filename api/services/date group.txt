@@ -1,0 +1,24 @@
+group by date
+SELECT date FROM uniformitydetail GROUP BY date;
+
+
+(`id`,
+`date`,
+`fromweeks`,
+`toweeks`,
+`percent`,
+`companyid`)
+
+
+(`id`,
+`date`,
+`week`,
+`totaleggspercenthw`,
+`hatcheggspercenthw`,
+`mortality`,
+`percentheweekly`,
+`totaleggshh`,
+`hatcheggshh`,
+`weeklypercenthatch`,
+`chickshh`,
+`companyid`)

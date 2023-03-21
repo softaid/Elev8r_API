@@ -1,0 +1,22 @@
+{
+  "server": {
+    "secret": "LogicalOS",
+    "localURL": "http://localhost:8000",
+    "dbconfig": {
+      "host": "172.16.10.126",
+      "user": "sa",
+      "password": "logical",
+      "database": "erpcompany"
+    },
+    "port": {
+      "webserver": 8000
+    },
+    "api": {
+      "expiresIn": 1440
+    }
+  },
+  "api": {
+    "expiresIn": 1440,
+    "baseUrl" : ""
+  }
+}

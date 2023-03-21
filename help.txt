@@ -1,0 +1,56 @@
+-----------------------------------------------------------------------------------------
+Project link -
+--------------------
+https://www.callicoder.com/node-js-express-mongodb-restful-crud-api-tutorial/
+
+
+=========================================================================================
+PROCESS MANAGER (PM2) - START/RELOAD/STOP Commands
+=========================================================================================
+https://www.terlici.com/2015/06/20/running-node-forever.html
+https://github.com/Unitech/pm2
+
+Start command with PM2
+------------------------------------------
+pm2 start app.js -i max
+
+
+When there is new code again it is very simple
+------------------------------------------
+pm2 reload app.js
+
+
+application is running all you have to do to stop it is
+------------------------------------------
+pm2 stop app.js
+=========================================================================================
+
+
+
+
+=========================================================================================
+API Architecture Requirements
+=========================================================================================
+Done List : 
+----------------------------------------
+
+- Routing
+- MySQL integration
+- Connection Pool (seemless connections)
+- Promisify (Async/await db calls)
+- Logging
+- Authentication (JWT Token - Login / Authenticate APIs)
+- Server crash handled (PM2 Implemented)
+- Dependency Injection Implemented
+- Error handling
+- Environment - DEV / PROD
+
+
+
+Todo List :
+----------------------------------------
+
+
+
+=========================================================================================
+
