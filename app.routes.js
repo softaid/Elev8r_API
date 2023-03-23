@@ -129,6 +129,7 @@ let appRouters = function (env, app, Container) {
     container.register('billofmaterialdetailRepository', require('./api/repositories/feedmill/billofmaterialdetail.repository'), ['pool', 'logRepository' ]);
 
     container.register('leadmasterRepository', require('./api/repositories/leadmanagement/leadmaster.repository'), ['pool', 'logRepository' ]);
+    container.register('leadRepository', require('./api/repositories/leadmanagement/lead.repository'), ['pool', 'logRepository' ]);
 
     //repository end
 
@@ -252,6 +253,7 @@ let appRouters = function (env, app, Container) {
     //Lead management service start
 
     container.register('leadmasterService', require('./api/services/leadmanagement/leadmaster.service'), ['leadmasterRepository', 'oauthRepository', 'logRepository' ]);
+    container.register('leadService', require('./api/services/leadmanagement/lead.service'), ['leadRepository', 'oauthRepository', 'logRepository' ]);
 
     //Lead management service end
     //service
@@ -454,6 +456,9 @@ let appRouters = function (env, app, Container) {
     // Lead Management
     var leadmasterService = container.get('leadmasterService');
     app.use('/leadmaster', leadmasterService);
+
+    var leadService = container.get('leadService');
+    app.use('/lead', leadService);
 
 }
 
