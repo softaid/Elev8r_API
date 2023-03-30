@@ -28,7 +28,7 @@ module.exports = function (reference, oauth, log) {
         }
     });
 
-    router.post('/', oauth.ensureLoggedIn, async function (request, response, next) {
+    router.post('/savereferencetype/', oauth.ensureLoggedIn, async function (request, response, next) {
         try{
             let rows = await reference.saveReferenceType(request, request.body);
             let reason = JSON.parse(JSON.stringify(rows))[2][0]; 
@@ -41,7 +41,7 @@ module.exports = function (reference, oauth, log) {
 
     });
         
-    router.delete('/:id', oauth.ensureLoggedIn, async function (request, response, next) {
+    router.delete('/deletereferencetype/:id', oauth.ensureLoggedIn, async function (request, response, next) {
         try {
             let result = await reference.deleteReferenceType(request, request.params);
             response.send(result);
@@ -52,11 +52,22 @@ module.exports = function (reference, oauth, log) {
         }
     });
 
+    router.get('/selectbymaster/:master', oauth.ensureLoggedIn, async function (request, response, next) {
+        try {
+            let result = await reference.getReferenceTypeByMaster(request, request.params);
+            response.send(result);
+        }
+        catch (err) {
+            console.log(' Error in router : ', err);
+            log.dbErrorLog("reference.service-getReferenceTypeByMaster", err);
+        }
+    });
+
     // referencetype services end
 
     // reference services start
 
-    router.get('/search/:companyid', oauth.ensureLoggedIn, async function (request, response, next) {
+    router.get('/search/:typecode', oauth.ensureLoggedIn, async function (request, response, next) {
         try {
             let result = await reference.getAllReference(request, request.params);
             response.send(result);

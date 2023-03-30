@@ -64,15 +64,29 @@ let leadmasterRepository = function (pool, log) {
         return null;
     };
 
+    this.getReferenceTypeByMaster = async function (req, referencetype) {
+        try {
+            return await pool.query(req, "call spc_referencetype_bymaster(?)",
+            [
+                referencetype.master,
+            ]);
+        }
+        catch (err) {
+            log.dbErrorLog("referencetype.repository - getReferenceTypeByMaster", err);
+        }
+    
+        return null;
+    };    
+
     // referencetype repository end
     
     // references repository start
 
     this.getAllReference = async function (req, reference) {
         try {
-            return await pool.query(req, "call spc_reference_search(?)",
+            return await pool.query(req, "call spc_reference_selectbygroup(?)",
             [
-                reference.companyid,
+                reference.typecode,
             ]);
         }
         catch (err) {
